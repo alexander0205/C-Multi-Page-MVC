@@ -1,0 +1,18 @@
+﻿
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/checkeditor")
+    <script>
+      var GLOBAL_script = {"apiUrlJpg":"@Html.Raw(ViewData["ApiServiceJpgView"])",
+            "apiUrlPdf": "@Html.Raw(ViewData["ApiServicePdfView"])",
+            "apiUrlUpload":"@Html.Raw(ViewData["ApiServiceUploadFile"])"};
+    </script>
+
+        @RenderBody()
+    
+
+   
+    @Scripts.Render("~/scripts/jQuery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jspage")
+    @RenderSection("scripts", required: false)

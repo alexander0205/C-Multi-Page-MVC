@@ -1,0 +1,1136 @@
+﻿@{ 
+    PageWebMic.Models.viewModelFront  viewModelFront = new  PageWebMic.Models.viewModelFront();
+}
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<html lang="en">
+<!--<![endif]-->
+<!-- Mirrored from theme.dima-lab.com/okab/demo-green.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Mar 2016 15:56:46 GMT -->
+<head>
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <title>MIC :: Ministerio de Industria y Comercio</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" data-them="" href="~/Content/front/css/styles-green.css">
+    <link rel="stylesheet" type="text/css" href="~/Scripts/front/js/specific/revolution-slider/css/settings.css" media="screen" />
+    <!--[if IE]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+      <![endif]-->
+    <!-- Googl Font -->
+ 
+    <link type="image/x-icon" href="/Content/front/images/favicon.png" rel="shortcut icon" />
+    <link type="image/x-icon" href="/Content/front/images/favicon.png" rel="apple-touch-icon" />
+    <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:300,700,400" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic" rel="stylesheet" type="text/css">
+</head>
+<body class="responsive " id="demo-green">
+    <!-- LOADING -->
+    <div class="all_content">
+        <!-- Dima-loading -->
+        <div class="dima-loading">
+            <span class="loading-top"></span> <span class="loading-bottom"></span> <span class="spin-2">
+                <p>Cargando</p>
+            </span><a href="#" class="load-close">X</a>
+        </div>
+        <!--! END Dima-loading -->
+        <!-- HEADER -->
+        @Html.Partial("header")
+        <!--! HEADER -->
+        <!-- SLIDER -->
+        <div class="tp-banner-container">
+            <div class="tp-banner fullscreen">
+                <ul>
+                    @foreach (var item in viewModelFront.slideShowPresentation)
+                    {
+                        if (item.type_name == "video")
+                        {
+                            <li data-transition="fade" data-slotamount="1" data-masterspeed="1500" data-delay="13000" data-saveperformance="off" data-title="@item.text_html">
+
+                                <iframe width="100%" height="100%" src="@item.url_image?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+                                <div class="flex-caption undertitle tp-caption skewfromleft customout rs-parallaxlevel-0" data-x="center" data-y="320" data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="530" data-start="900" data-easing="Power3.easeInOut" data-elementdelay="0.1" data-endelementdelay="0.1"> </div>
+                            </li>
+
+                        }
+                        else
+                        {
+                            <li data-transition="fade" data-slotamount="1" data-masterspeed="1500" data-delay="13000" data-saveperformance="off" data-title="@item.text_html">
+                                <img src="@item.url_image" alt="@item.text_html" data-bgposition="left center" data-kenburns="on" data-duration="14000" data-ease="Linear.easeNone" data-bgfit="100" data-bgfitend="130" data-bgpositionend="right center" />
+                                <!-- <h3 class="undertitle smoothcircle skewfromleft customout rs-parallaxlevel-0" data-x="center" data-y="center" data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="530" data-start="700" data-easing="Power3.easeInOut" data-elementdelay="0.1" data-endelementdelay="0.1">
+                                <span class="theme-color">Bienvenidos al</span> Ministerio de Industria y Comercio
+                            </h3> -->
+                                <div class="flex-caption undertitle tp-caption skewfromleft customout rs-parallaxlevel-0" data-x="center" data-y="320" data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="530" data-start="900" data-easing="Power3.easeInOut" data-elementdelay="0.1" data-endelementdelay="0.1"> </div>
+                                <div class="pattern-slider"></div>
+                            </li>
+
+                        }
+
+
+
+                    }
+                </ul>
+            </div>
+        </div>
+        <!--! END SLIDER -->
+        <!-- ALL CONTENTS -->
+        <div class="dima-main">
+            @RenderBody()
+            <!-- FOOTER -->
+            <!-- FOOTER ENLACES A -->
+            <div class="enlacesInteres opacity-zero hidden-xsd animated fadeInDown" data-animate="fadeInDown" data-delay="0">
+                <div class="container bgEscudo"></div>
+                <div class="container">
+                    <div class="ok-row">
+                        <div class="ok-md-12 ok-xsd-12 ok-sd-12 widget">
+                            <div class="widget-content text-center">
+                                <strong class="text-big">Enlaces a:</strong>
+                                <select id="selectMe" class="selector">
+                                    <option value="option1">Ministerios</option>
+                                    <option value="option2">Direcciones Generales</option>
+                                    <option value="option3">Institutos</option>
+                                    <option value="option4">Superintendencia</option>
+                                    <option value="option5">Ayuntamientos</option>
+                                    <option value="option6">Grupo Miembro CNSIC</option>
+                                    <option value="option7">Miembros CNSIC</option>
+                                    <option value="option8">Gabinete TIC</option>
+                                    <option value="option9">Servicios</option>
+                                    <option value="option10">Internacional</option>
+                                    <option value="option11">De Inter&eacute;s</option>
+                                </select>
+                            </div>
+                            <div class="widget-content">
+                                <div id="option1" class="group">
+                                    <div class="ok-md-3-2 ok-sd-3" data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.minpre.gob.do/">
+                                                    <strong class="clear-text">Ministerio de la Presidencia</strong>
+                                                    www.minpre.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.map.gob.do/">
+                                                    <strong class="clear-text">Ministerio de Administraci&oacute;n P&uacute;blica</strong>
+                                                    www.map.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.sap.gob.do/">
+                                                    <strong class="clear-text">Ministerio Administrativo de la Presidencia</strong>
+                                                    www.sap.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.agricultura.gob.do/">
+                                                    <strong class="clear-text">Ministerio de Agricultura</strong>
+                                                    www.agricultura.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.cultura.gob.do/">
+                                                    <strong class="clear-text">Ministerio de Cultura</strong>
+                                                    www.cultura.gob.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.ministeriodedeportes.gob.do/">
+                                                    <strong class="clear-text">Ministerio de Deportes y Recreaci&oacute;n</strong>
+                                                    www.ministeriodedeportes.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.minerd.gob.do/">
+                                                    <strong class="clear-text">Ministerio de Educaci&oacute;n</strong>
+                                                    www.minerd.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.mescyt.gob.do/">
+                                                    <strong class="clear-text">Ministerio de Educaci&oacute;n Superior Ciencia y Tecnolog&iacute;a</strong>
+                                                    www.mescyt.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.juventud.gob.do/">
+                                                    <strong class="clear-text">Ministerio de la Juventud</strong>
+                                                    www.juventud.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.fuerzasarmadas.mil.do/">
+                                                    <strong class="clear-text">Ministerio de las Fuerzas Armadas</strong>
+                                                    www.fuerzasarmadas.mil.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.hacienda.gob.do/">
+                                                    <strong class="clear-text">Ministerio de Hacienda</strong>
+                                                    www.hacienda.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.mip.gob.do/">
+                                                    <strong class="clear-text">Ministerio de Interior y Policia</strong>
+                                                    www.mip.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.ambiente.gob.do/">
+                                                    <strong class="clear-text">Ministerio de Medio Ambiente y Recursos Naturales</strong>
+                                                    www.ambiente.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.mujer.gob.do/">
+                                                    <strong class="clear-text">Ministerio de la Mujer</strong>
+                                                    www.mujer.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.economia.gob.do/">
+                                                    <strong class="clear-text">Ministerio de Econom&iacute;a, Planificaci&oacute;n y Desarrollo</strong>
+                                                    www.economia.gob.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.mitur.gob.do/">
+                                                    <strong class="clear-text">Ministerio de Turismo</strong>
+                                                    www.mitur.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.mirex.gob.do/">
+                                                    <strong class="clear-text">Ministerio de Relaciones Exteriores</strong>
+                                                    www.mirex.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.mopc.gob.do/">
+                                                    <strong class="clear-text">Ministerio de Obras P&uacute;blicas y Comunicaciones</strong>
+                                                    www.mopc.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.mt.gob.do/">
+                                                    <strong class="clear-text">Ministerio de Trabajo</strong>
+                                                    www.mt.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.ministeriodesalud.gob.do/">
+                                                    <strong class="clear-text">Ministerio de Salud P&uacute;blica y Asistencia Social</strong>
+                                                    www.ministeriodesalud.gob.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div id="option2" class="group">
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.aduanas.gob.do/">
+                                                    <strong class="clear-text">Direcci&oacute;n General de Aduanas</strong>
+                                                    www.aduanas.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.hacienda.gob.do/">
+                                                    <strong class="clear-text">Direcci&oacute;n General de Pol&iacute;tica y Legislaci&oacute;n Tributaria</strong>
+                                                    www.hacienda.gob.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.digepres.gob.do/">
+                                                    <strong class="clear-text">Direcci&oacute;n General de Presupuesto</strong>
+                                                    www.digepres.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.digecog.gob.do/">
+                                                    <strong class="clear-text">Direcci&oacute;n General de Contabilidad Gubernamental</strong>
+                                                    www.digecog.gob.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.creditopublico.gob.do/">
+                                                    <strong class="clear-text">Direcci&oacute;n General de Cr&eacute;dito P&uacute;blico</strong>
+                                                    www.creditopublico.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.comprasdominicana.gob.do/">
+                                                    <strong class="clear-text">Direcci&oacute;n General de Compras y Contrataciones</strong>
+                                                    www.comprasdominicana.gob.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.economia.gob.do/">
+                                                    <strong class="clear-text">Direcci&oacute;n General de Inversi&oacute;n P&uacute;blica</strong>
+                                                    www.economia.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.dgii.gob.do/">
+                                                    <strong class="clear-text">Direcci&oacute;n General de Impuestos Internos</strong>
+                                                    www.dgii.gob.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div id="option3" class="group">
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.inazucar.gov.do/">
+                                                    <strong class="clear-text">Instituto Azucarero Dominicano (INAZUCAR)</strong>
+                                                    www.inazucar.gov.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.iad.gob.do/">
+                                                    <strong class="clear-text">Instituto Agrario Dominicano (IAD)</strong>
+                                                    www.iad.gob.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.idecoop.gov.do/">
+                                                    <strong class="clear-text">Instituto de Desarrollo y Cr&eacute;dito Cooperativo (IDECOOP)</strong>
+                                                    www.idecoop.gov.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.idih.gob.do/">
+                                                    <strong class="clear-text">Instituto de Dignidad Humana de la Polic&iacute;a Nacional (IDIH)</strong>
+                                                    www.idih.gob.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.iibi.gov.do/">
+                                                    <strong class="clear-text">Instituto de Innovaci&oacute;n en Biotecnolog&iacute;a e Industrial (IIBI)</strong>
+                                                    www.iibi.gov.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div id="option4" class="group">
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.sb.gob.do/">
+                                                    <strong class="clear-text">Superintendencia de Bancos</strong>
+                                                    www.sb.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.siv.gob.do/">
+                                                    <strong class="clear-text">Superintendencia de Valores</strong>
+                                                    www.siv.gob.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.superseguros.gob.do/">
+                                                    <strong class="clear-text">Superintendencia de Seguros</strong>
+                                                    www.superseguros.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.sisalril.gob.do/">
+                                                    <strong class="clear-text">Superintendencia de Salud y Riesgos Laborales</strong>
+                                                    www.sisalril.gob.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.sipen.gob.do/">
+                                                    <strong class="clear-text">Superintendencia de Pensiones</strong>
+                                                    www.sipen.gob.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.sie.gob.do/">
+                                                    <strong class="clear-text">Superintendencia de Electricidad</strong>
+                                                    www.sie.gob.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div id="option5" class="group">
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.adn.gob.do/">
+                                                    <strong class="clear-text">Alcald&iacute;a del Distrito Nacional (ADN)</strong>
+                                                    www.adn.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.ayuntamientoserie23.org/">
+                                                    <strong class="clear-text">Alcald&iacute;a de San Pedro de Macoris</strong>
+                                                    www.ayuntamientoserie23.org
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.sanjuan.gob.do/">
+                                                    <strong class="clear-text">Alcald&iacute;a Municipal San Juan de la Maguana</strong>
+                                                    www.sanjuan.gob.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.alcaldiadeconstanza.com/">
+                                                    <strong class="clear-text">Alcald&iacute;a de Constanza</strong>
+                                                    www.alcaldiadeconstanza.com
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.aromana.gob.do/">
+                                                    <strong class="clear-text">Alcald&iacute;a de La Romana</strong>
+                                                    www.aromana.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.am.gob.do/">
+                                                    <strong class="clear-text">Alcald&iacute;a de Moca</strong>
+                                                    www.am.gob.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.ayuntamientosantiagord.com/">
+                                                    <strong class="clear-text">Alcald&iacute;a de Santiago de los Caballeros</strong>
+                                                    www.ayuntamientosantiagord.com
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.siv.gob.do/">
+                                                    <strong class="clear-text">Alcald&iacute;a Municipal de Bajos de Haina</strong>
+                                                    www.ayuntamientodehaina.com
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.sanfrancisco.gob.do/">
+                                                    <strong class="clear-text">Alcald&iacute;a de San Francisco de Macoris</strong>
+                                                    www.sanfrancisco.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.ayuntamientopuertoplata.com/">
+                                                    <strong class="clear-text">Alcald&iacute;a de Puerto Plata</strong>
+                                                    www.ayuntamientopuertoplata.com
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div id="option6" class="group">
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.claro.com.do/">
+                                                    <strong class="clear-text">Claro Dominicana</strong>
+                                                    www.claro.com.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.uasd.edu.do/">
+                                                    <strong class="clear-text">Universidad Aut&oacute;noma de Santo Domingo</strong>
+                                                    www.uasd.edu.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.primeradama.gob.do/">
+                                                    <strong class="clear-text">Despacho de la Primera Dama</strong>
+                                                    www.primeradama.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.intec.edu.do/">
+                                                    <strong class="clear-text">Instituto Tecnol&oacute;gico de Santo Domingo</strong>
+                                                    www.intec.edu.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.gabsocial.gov.do/">
+                                                    <strong class="clear-text">Consejo Consultivo de la Sociedad Civil</strong>
+                                                    www.gabsocial.gov.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.indotel.gob.do/">
+                                                    <strong class="clear-text">Instituto Dominicano de las Telecomunicaciones</strong>
+                                                    www.indotel.gob.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.orange.com.do/">
+                                                    <strong class="clear-text">Orange Dominicana</strong>
+                                                    www.orange.com.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div id="option7" class="group">
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.impulsar.org/">
+                                                    <strong class="clear-text">Alianza ONG</strong>
+                                                    www.impulsar.org
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.claro.com.do/">
+                                                    <strong class="clear-text">Claro Dominicana</strong>
+                                                    www.claro.com.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.onapi.gob.do/">
+                                                    <strong class="clear-text">ONAPI</strong>
+                                                    www.onapi.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.unibe.edu.do/">
+                                                    <strong class="clear-text">Universidad Iberoamericana</strong>
+                                                    www.unibe.edu.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.aneinfo.com/">
+                                                    <strong class="clear-text">ANEINFO</strong>
+                                                    www.aneinfo.com
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.finjus.org.do/">
+                                                    <strong class="clear-text">FINJUS</strong>
+                                                    www.finjus.org.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.orange.com.do/">
+                                                    <strong class="clear-text">Orange Dominicana</strong>
+                                                    www.orange.com.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.utesa.edu/">
+                                                    <strong class="clear-text">Universidad Tecnol&oacute;gica de Santiago</strong>
+                                                    www.utesa.edu
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.prodetel.org.do/">
+                                                    <strong class="clear-text">Asociaci&oacute;n de Profesionales de las Telecomunicaciones</strong>
+                                                    www.prodetel.org.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.funglode.org/">
+                                                    <strong class="clear-text">Fundaci&oacute;n Global Democracia y Desarrollo</strong>
+                                                    www.funglode.org
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.pucmm.edu.do/">
+                                                    <strong class="clear-text">Pontificia Universidad Cat&oacute;lica Madre y Maestra</strong>
+                                                    www.pucmm.edu.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.viva.com.do/">
+                                                    <strong class="clear-text">Viva Dominicana</strong>
+                                                    www.viva.com.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.anje.org/">
+                                                    <strong class="clear-text">Asociaci&oacute;n Nacional de J&oacute;venes Empresarios (ANJE)</strong>
+                                                    www.anje.org
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.infotep.gob.do/">
+                                                    <strong class="clear-text">Instituto de Formaci&oacute;n T&eacute;cnico Profesional (INFOTEP)</strong>
+                                                    www.infotep.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.tricom.net/">
+                                                    <strong class="clear-text">Tricom</strong>
+                                                    www.tricom.net
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.wind.com.do/">
+                                                    <strong class="clear-text">Wind Telecom</strong>
+                                                    www.wind.com.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.cnc.gob.do/">
+                                                    <strong class="clear-text">Consejo Nacional de Competitividad</strong>
+                                                    www.cnc.gob.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.intec.edu.do/">
+                                                    <strong class="clear-text">Instituto Tecnol&oacute;gico de Santo Domingo</strong>
+                                                    www.intec.edu.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.unapec.edu.do/">
+                                                    <strong class="clear-text">Universidad APEC</strong>
+                                                    www.unapec.edu.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.conep.org.do/">
+                                                    <strong class="clear-text">Consejo Nacional de la Empresa Privada</strong>
+                                                    www.conep.org.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.impulsar.org/">
+                                                    <strong class="clear-text">Mujeres en Desarrollo</strong>
+                                                    www.impulsar.org
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.ucsd.edu.do/">
+                                                    <strong class="clear-text">Universidad Cat&oacute;lica de Santo Domingo</strong>
+                                                    www.ucsd.edu.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div id="option8" class="group">
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.minpre.gob.do/">
+                                                    <strong class="clear-text">Ministerio de la Presidencia</strong>
+                                                    www.minpre.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.primeradama.gob.do/">
+                                                    <strong class="clear-text">Despacho de la Primera Dama</strong>
+                                                    www.primeradama.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.cnc.gob.do/">
+                                                    <strong class="clear-text">Consejo Nacional de Competitividad</strong>
+                                                    www.cnc.gob.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.mescyt.gob.do/">
+                                                    <strong class="clear-text">Ministerio de Educaci&oacute;n Superior Ciencia y Tecnolog&iacute;a</strong>
+                                                    www.mescyt.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.optic.gob.do/">
+                                                    <strong class="clear-text">Oficina Presidencial de Tecnolog&iacute;as de la Informaci&oacute;n y Comunicaci&oacute;n</strong>
+                                                    www.optic.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.onapi.gob.do/">
+                                                    <strong class="clear-text">Oficina Nacional de la Propiedad Industrial</strong>
+                                                    www.onapi.gob.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.itla.edu.do/">
+                                                    <strong class="clear-text">Instituto Tecnol&oacute;gico de las Am&eacute;ricas</strong>
+                                                    www.itla.edu.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.indotel.gob.do/">
+                                                    <strong class="clear-text">Instituto Dominicano de las Telecomunicaciones</strong>
+                                                    www.indotel.gob.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.pgr.gob.do/">
+                                                    <strong class="clear-text">Procuradur&iacute;a General de la Rep&uacute;blica Dominicana</strong>
+                                                    www.pgr.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.cei-rd.gob.do/">
+                                                    <strong class="clear-text">Centro de Exportaci&oacute;n e Inversi&oacute;n de la Rep&uacute;blica Dominicana</strong>
+                                                    www.cei-rd.gob.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div id="option9" class="group">
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.creatuempresa.gob.do/">
+                                                    <strong class="clear-text">Crea Tu Empresa</strong>
+                                                    www.creatuempresa.gob.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.dgii.gob.do/">
+                                                    <strong class="clear-text">Direcci&oacute;n General de Impuestos Internos</strong>
+                                                    www.dgii.gob.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div id="option10" class="group">
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.ahciet.net/">
+                                                    <strong class="clear-text">AHCIET</strong>
+                                                    www.ahciet.net
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.estrategiadigital.gob.cl/">
+                                                    <strong class="clear-text">Estrategia Digital</strong>
+                                                    www.estrategiadigital.gob.cl
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.redgealc.net/">
+                                                    <strong class="clear-text">Red GEALC</strong>
+                                                    www.redgealc.net
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.inteco.es/">
+                                                    <strong class="clear-text">INTECO</strong>
+                                                    www.inteco.es
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.idrc.ca/">
+                                                    <strong class="clear-text">ICA</strong>
+                                                    www.idrc.ca
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.itu.int/">
+                                                    <strong class="clear-text">ITU</strong>
+                                                    www.itu.int
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.educoas.org/">
+                                                    <strong class="clear-text">Portal Educativo de las Am&eacute;ricas</strong>
+                                                    www.educoas.org
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.weforum.org/">
+                                                    <strong class="clear-text">World Economic Forum</strong>
+                                                    www.weforum.org
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.latinoamericann.org/">
+                                                    <strong class="clear-text">LatinoamerICANN</strong>
+                                                    www.latinoamericann.org
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.oei.es/">
+                                                    <strong class="clear-text">OEI</strong>
+                                                    www.oei.es
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div id="option11" class="group">
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.bancomundial.org/">
+                                                    <strong class="clear-text">Banco Mundial</strong>
+                                                    www.bancomundial.org
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.brown.edu/">
+                                                    <strong class="clear-text">Brown University</strong>
+                                                    www.brown.edu
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.caricad.net/">
+                                                    <strong class="clear-text">CARICAD</strong>
+                                                    www.caricad.net
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.eclac.cl/">
+                                                    <strong class="clear-text">CEPAL</strong>
+                                                    www.eclac.cl
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.vuird.gob.do/">
+                                                    <strong class="clear-text">Ventanilla &Uacute;nica de Inversi&oacute;n</strong>
+                                                    www.vuird.gob.do
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.comunidadandina.org/">
+                                                    <strong class="clear-text">Comunidad Andina</strong>
+                                                    www.comunidadandina.org
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.imf.org/">
+                                                    <strong class="clear-text">FMI</strong>
+                                                    www.imf.org
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.planejamento.gov.br/">
+                                                    <strong class="clear-text">Ministerio de Planeamiento Organizaci&oacute;n y Gesti&oacute;n</strong>
+                                                    www.planejamento.gov.br
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.onu.org/">
+                                                    <strong class="clear-text">ONU</strong>
+                                                    www.onu.org
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.oas.org/">
+                                                    <strong class="clear-text">Organizaci&oacute;n de Estados Americanos</strong>
+                                                    www.oas.org
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.undp.org/">
+                                                    <strong class="clear-text">PNUD</strong>
+                                                    www.undp.org
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.gob.do/">
+                                                    <strong class="clear-text">Portal Ciudadano</strong>
+                                                    www.gob.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.brasil.gov.br/">
+                                                    <strong class="clear-text">Portal del Gobierno Brasilero</strong>
+                                                    www.brasil.gov.br
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.canada.gc.ca/">
+                                                    <strong class="clear-text">Portal del Gobierno de Canad&aacute;</strong>
+                                                    www.canada.gc.ca
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.puntogov.com/">
+                                                    <strong class="clear-text">Revista Digital Punto GOV</strong>
+                                                    www.puntogov.com
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ok-md-3-2 ok-sd-3 " data-animate="fadeInLeft" data-delay="0">
+                                        <ul class="icon-list">
+                                            <li>
+                                                <a target="_blank" href="http://www.funcionpublica.gob.mx/">
+                                                    <strong class="clear-text">Secretar&iacute;a de la Funci&oacute;n P&uacute;blica</strong>
+                                                    www.funcionpublica.gob.mx
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.utesa.edu/">
+                                                    <strong class="clear-text">Universidad Tecnol&oacute;gica de Santiago</strong>
+                                                    www.utesa.edu
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.unibe.edu.do/">
+                                                    <strong class="clear-text">Universidad Iberoamericana</strong>
+                                                    www.unibe.edu.do
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.portal.unesco.org/">
+                                                    <strong class="clear-text">UNESCO</strong>
+                                                    www.portal.unesco.org
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.unicef.org/">
+                                                    <strong class="clear-text">UNICEF</strong>
+                                                    www.unicef.org
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- FIN FOOTER ENLACES A -->
+            <!-- TOP FOOTER -->
+            <div class="top-footer opacity-zero show animated fadeInDown" data-animate="fadeInDown" data-delay="0">
+                <div class="container bgLogos"></div>
+                <div class="container">
+                    <div class="ok-row">
+                        <div class="ok-md-12 ok-xsd-12 ok-sd-12 widget text-center" style="margin-bottom: 1em !important">
+                            <h5 class="widget-title">MINISTERIO DE INDUSTRIA Y COMERCIO (MIC)</h5>
+                            <h5 class="widget-title">Oficina Principal</h5>
+                            <div class="widget-content">
+                                <p>
+                                    7mo. piso, Edificio de Oficinas Gubernamentales Juan Pablo Duarte (Edificio JPD).<br>
+                                    Av. M&eacute;xico esquina Leopoldo Navarro, Gazcue.
+                                    Santo Domingo, Rep&uacute;blica Dominicana.<br>
+                                    <strong>Apartado Postal:</strong> 9876 / <strong>Tel&eacute;fono:</strong> (809) 685-5171 / <strong>Fax:</strong> (809) 686-1973
+                                </p>
+                            </div>
+                        </div>
+                        <div class="ok-md-12 ok-xsd-12 ok-sd-12 widget text-center" style="margin-bottom: 1em !important">
+                            <h5 class="widget-title">Oficina Av. 27 de Febrero</h5>
+                            <div class="widget-content">
+                                <p>
+                                    Av. 27 de Febrero No. 209, Ensanche Naco. Santo Domingo, Rep&uacute;blica Dominicana.<br>
+                                    <strong>Apartado Postal:</strong> 10121 / <strong>Tel&eacute;fono:</strong> (809) 567-7192 / <strong>Fax:</strong> (809) 381-8076
+                                </p>
+                            </div>
+                        </div>
+                        <div class="ok-md-12 ok-xsd-12 ok-sd-12 widget text-center" style="margin-bottom: 1em !important;">
+                            <div class="widget-content">
+                                <p><strong>Horario de Servicios:</strong> Lunes a viernes de 8:00 a.m. a 5:00 p.m.</p>
+                            </div>
+                        </div>
+                        <div class="ok-md-12 ok-xsd-12 ok-sd-12 widget text-center" style="margin-bottom: 1em !important;">
+                            <div class="widget-content">
+                                <p><strong>Correo Electr&oacute;nico:</strong> <a href="mailto:info@mic.gob.do">info@mic.gob.do</a> / <strong>RNC:</strong> 401007355</p>
+                            </div>
+                        </div>
+                        <div class="ok-md-12 ok-xsd-12 ok-sd-12 widget text-center" style="margin-bottom: 1em !important;">
+                            <div class="widget-content">
+                                <div class="dima-social-footer social-media social-medium">
+                                    <ul class="inline clearfix">
+                                        <li><a data-animated-link="fadeOut" target="_blank" href="http://www.facebook.com/MICPYMES"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a data-animated-link="fadeOut" target="_blank" href="http://twitter.com/MIC_RD"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a data-animated-link="fadeOut" target="_blank" href="http://plus.google.com/+MICPYMES/"><i class="fa fa-google-plus"></i></a></li>
+                                        <!--
+                                    <li><a data-animated-link="fadeOut" target="_blank" href="#"><i class="fa fa-instagram"></i></a></li>
+                                    -->
+                                        <li><a data-animated-link="fadeOut" target="_blank" href="http://www.youtube.com/industriaRD"><i class="fa fa-youtube"></i></a></li>
+                                        <li><a data-animated-link="fadeOut" target="_blank" href="http://www.flickr.com/photos/micpymes/"><i class="fa fa-flickr"></i></a></li>
+                                        <li><a data-animated-link="fadeOut" target="_blank" href="http://www.linkedin.com/company/ministerio-de-industria-y-comercio"><i class="fa fa-linkedin"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- FOOTER MENU -->
+                        <div class="ok-md-12 ok-xsd-12 ok-sd-12 widget text-center" style="margin-bottom: 1em !important;">
+                            <ul class="dima-center-full dima-menu text-center">
+                                <li><a data-animated-link="fadeOut" href="#">T&eacute;rminos de Uso</a></li>
+                                <li><a data-animated-link="fadeOut" href="#">Pol&iacute;ticas de Privacidad</a></li>
+                                <li><a data-animated-link="fadeOut" href="#">Preguntas Frecuentes</a></li>
+                                <li><a data-animated-link="fadeOut" href="https://mail.mic.gob.do/owa" target="_blank">Webmail</a></li>
+                            </ul>
+                        </div>
+                        <!--! END FOOTER MENU -->
+                        <!-- COPYRIGHT -->
+                        <div class="ok-md-12 ok-xsd-12 ok-sd-12 text-center" style="margin-bottom: 1em !important;">
+                            <div class="dima-center-full copyright text-center">
+                                <p>© 2016. Todos los Derechos Reservados.</p>
+                            </div>
+                        </div>
+                        <!--! END COPYRIGHT -->
+                        <!-- C&Oacute;DIGO DE SELLOS NORTIC -->
+                        <div class="ok-md-12 ok-xsd-12 ok-sd-12 widget text-center" align="center" style="margin-bottom: 0 !important;">
+                            <div class="widget-content">
+                                <!-- C&Oacute;DIGO DE SELLO NORTIC A2:2013 -->
+                                <span id="selloNortic"><a href="http://optic.gob.do/nortic/index.php/certificaciones/instituciones-certificadas/item/ministerio-de-industria-y-comercio-mic" hreflang="es" target="_blank" rel="nofollow" title="Medio web certificado bajo la NORTIC A2:2013 con el NIU 14020-01-A20E21"><img src="http://optic.gob.do/nortic/images/sellos/mic-sello-a2-2013/01-mic.png" lang="es" width="83" height="100" alt="Sello de certificaci&oacute;n de la NORTIC A2:2013 con el NIU 14020-01-A20E21" /></a></span>
+                                <!-- FIN C&Oacute;DIGO DE SELLO NORTIC A2:2013 -->
+                                <!-- C&Oacute;DIGO DE SELLO NORTIC A5:2015 -->
+                                <span id="selloNortic"><a href="http://optic.gob.do/nortic/index.php/certificaciones/instituciones-certificadas/item/ministerio-de-industria-y-comercio-mic" hreflang="es" target="_blank" rel="nofollow" title="Medio web certificado bajo la NORTIC A5:2015 con el NIU 14020-01-A50F02"><img src="http://optic.gob.do/nortic/images/sellos/mic-sello-a5-2015/01-mic.png" lang="es" width="83" height="100" alt="Sello de certificaci&oacute;n de la A5:2015 con el NIU 14020-01-A50F02" /></a></span>
+                                <!-- FIN C&Oacute;DIGO DE SELLO NORTIC A5:2015 -->
+                            </div>
+                        </div>
+                        <!-- FIN C&Oacute;DIGO DE SELLOS NORTIC -->
+                    </div>
+                </div>
+            </div>
+            <!--! END TOP FOOTER -->
+            <!--! END FOOTER -->
+        </div>
+        <!--! END ALL CONTENT -->
+        </div>
+    <!--! END LOADING -->
+    <script src="~/Scripts/front/js/core/jquery-2.1.1.min.js"></script>
+    <script src="~/Scripts/front/js/core/load.js"></script>
+    <script src="~/Scripts/front/js/core/jquery.easing.1.3.js"></script>
+    <script src="~/Scripts/front/js/core/modernizr-2.8.2.min.js"></script>
+    <script src="~/Scripts/front/js/core/imagesloaded.pkgd.min.js"></script>
+    <script src="~/Scripts/front/js/core/respond.src.js"></script>
+    <script src="~/Scripts/front/js/libs.min.js"></script>
+    <script src="~/Scripts/front/js/specific/mediaelement/mediaelement-and-player.min.js"></script>
+    <script src="~/Scripts/front/js/specific/video.js"></script>
+    <script src="~/Scripts/front/js/specific/bigvideo.js"></script>
+    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script src="~/Scripts/front/js/specific/gmap3.min.js"></script>
+    <script src="~/Scripts/front/js/map.js"></script>
+    <script type="text/javascript" src="~/Scripts/front/js/specific/revolution-slider/js/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/front/js/specific/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="~/Scripts/front/js/main.js"></script>
+    <script type="text/javascript" async defer data-cfasync="false" src="https://mylivechat.com/chatinline.aspx?hccid=67515042"></script>
+</body>
+</html>

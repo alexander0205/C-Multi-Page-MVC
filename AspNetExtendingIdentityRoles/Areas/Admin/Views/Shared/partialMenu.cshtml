@@ -1,0 +1,147 @@
+﻿
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        @if (User.IsInRole("Admin"))
+        {
+            <li  class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <span class="glyphicon glyphicon-cog" aria-hidden="true">
+                    </span>
+                    @ViewData["Rconfiguration"]
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-submenu">
+                        <a href="#" class="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                            <span class="glyphicon glyphicon-user"></span>
+                            @ViewData["Rusers"]
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                @Html.ActionLink(@ViewData["RmanagerUsuarios"].ToString(), "Index", "Account")
+                            </li>
+                            <li>
+                                @Html.ActionLink(@ViewData["Rroles"].ToString(), "Index", "Roles")
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a href="#" class="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                            <span class="glyphicon glyphicon-oil"></span>
+                            @ViewData["Rhidrocarburos"]
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                @Html.ActionLink(@ViewData["Rcombustible"].ToString(), "Index", "Combustibles")
+                            </li>
+
+
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a href="#" class="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                            <span class="glyphicon glyphicon-oil"></span>
+                            @ViewData["RContenidoContenido"]
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                @Html.ActionLink(@ViewData["Rcontenido"].ToString(), "Index", "articulos_contenido")
+                            </li>
+                        </ul>
+                    </li>
+                    
+
+                </ul>
+            </li>
+
+        }
+        @if (User.IsInRole("inicio"))
+        {
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <span class="glyphicon glyphicon-oil" aria-hidden="true">
+                    </span>
+                    @ViewData["Rinicio"]
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    @if (User.IsInRole("slideshow"))
+                    {
+                    <li>
+                        @Html.ActionLink( (string)@ViewData["RstarSlide"],"Index", "slideshows")
+                    </li>
+                    }
+                    @if (User.IsInRole("banners"))
+                    {
+                        <li>
+                            @Html.ActionLink((string)@ViewData["Rbanners"], "Index", "banners")
+                        </li>
+                    }
+                </ul>
+            </li>
+        }
+        @if (User.IsInRole("Direcciones"))
+        {
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <span class="glyphicon glyphicon-oil" aria-hidden="true">
+                    </span>
+                    @ViewData["Rdirecciones"]
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    @foreach (var item in ViewBag.menuDirecciones)
+                    { 
+                        if (User.IsInRole((string)item.id_title.Replace("-", "")))
+                        {
+                            if ((string)item.id_title == "Hidrocarburos")
+                            {
+                                <li class="dropdown-submenu">
+                                    @Html.ActionLink((string)item.titulo, (string)item.id_title, "direcciones")
+                                    <ul class="dropdown-menu">
+                            <li>
+                                @Html.ActionLink(@ViewData["Rprecio_combustible"].ToString(), "Index", "PrecioCombustibles")
+                            </li>
+                           
+                        </ul>
+                                </li>
+                            }
+                            else {
+                                <li>
+                                    @Html.ActionLink((string)item.titulo, (string)item.id_title.Replace("-", ""), "direcciones")
+                                </li>
+
+                            }
+
+                        }
+
+                    }
+                </ul>
+            </li>
+        }
+        @if (User.IsInRole("Viceministerios"))
+        {
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <span class="glyphicon glyphicon-oil" aria-hidden="true">
+                    </span>
+                    @ViewData["Rviceministerios"]
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                @foreach (var item in ViewBag.menuViceministerios)
+                {
+                    if (User.IsInRole("V"+(string)item.id_title.Replace("-", "")))
+                    {
+                    <li>
+                        @Html.ActionLink((string)item.titulo, (string)item.id_title.Replace("-", ""), "Viceministerios")
+                    </li>
+
+                    }
+                }
+                </ul>
+            </li>
+        }
+    </ul>
+    @Html.Partial("_LoginPartial")
+</div>

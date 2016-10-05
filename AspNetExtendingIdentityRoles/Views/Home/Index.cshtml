@@ -1,0 +1,301 @@
+@model PageWebMic.Models.viewModelFront
+@{
+    //ViewBag.Title = "About";
+    Layout = "~/Views/Shared/_LayoutPrincipal.cshtml";
+}
+
+
+    <!-- MENSAJE AÑO
+    <section class="section section-colored" id="mensaje" name="mensaje" style="padding: 1em 0 0 0; background: url(images/bg/vichy.jpg) repeat left top;">
+      <div class="text-center">
+          <h4 class="opacity-zero show animated fadeInDown">"Año del Fomento a la Vivienda"</h4>
+      </div>
+    </section>
+    <!--! MENSAJE AÑO -->
+    <!-- COMBUSTIBLES Y NOTICIAS -->
+    <section class="section section-colored" id="news" name="news">
+        <div class="page-section-content overflow-hidden" style="padding: 0px !important; background: url(images/sections/blur-3.jpg) repeat-x left top; border-top: #FF1A26 5px solid;">
+            <div class="container" style="margin: 2em auto 0 auto;">
+                <div class="container dima-isotope-container ">
+                    <section class="boxed-blog text-white">
+                        <div class="ok-row">
+                            <!-- PRECIOS COMBUSTIBLES -->
+                            <div class="ok-md-4 ok-xsd-12 preciosComb opacity-zero show animated fadeInUp" data-animate="fadeInUp" data-delay="0" style="margin: 0 3% 2em 0; padding: 0 !important; min-width: 260px !important">
+                                <h4 class="text-left opacity-zero show animated fadeInDown" data-animate="fadeInDown" data-delay="0" style="margin-bottom: 0.9em !important;">Precios de Combustibles</h4>
+                                <h6 class="text-right opacity-zero show animated fadeInDown" data-animate="fadeInDown" data-delay="0" style="margin-bottom: 1em !important;">@Model.combustibleActual.titulo</h6>
+                               
+                                 <!-- COMBUSTIBLE  -->
+                                <div class="preciosBorderSeparator" >
+                                </div>
+                                @foreach (var item in Model.combustibleActual.cambio_combustible_precio.OrderBy(x=>x.combustible.position))
+                                {
+                                    <div class="preciosBorderSeparator">
+                                        <h6 class="h-skill undertitle">@item.combustible.nombre <span class="percent-end undertitle">RD$ @item.precio</span> </h6>
+                                    </div>
+
+                                }
+                               
+                                <!--! COMBUSTIBLE -->
+                              
+                               
+                                <div align="center"><a href="#"><button class="di_darckblue button fill tiny ">Ver hist&oacute;rico de precios</button></a></div>
+                            </div>
+                            <!--! END PRECIOS COMBUSTIBLES -->
+                            <!-- RESUMEN DE NOTICIAS -->
+                            <div class="ok-md-8 ok-xsd-12 opacity-zero show" style="margin: 0 0 2em 0; padding: 0;">
+                                <h4 class="text-left opacity-zero show" data-delay="0" style="margin-bottom: 0.8em !important;">Resumen de Noticias</h4>
+                                @{ 
+                                    int articulosFrontCount = 1;
+                                }
+                                @foreach (var item in Model.articulosFront)
+                                {
+                                    if (articulosFrontCount < 3)
+                                    {
+                                          <!-- POST (@articulosFrontCount) -->
+                                        <article role="article" style="padding: 0 1rem 0 0 !important;" class="post ok-md-4 ok-xsd-6 opacity-zero show animated fadeInUp" data-animate="fadeInUp" data-delay="50">
+                                            <div class="post-img ">
+                                                <img src="@item.image_presentation_1" alt="@item.titulo">
+                                                <div class="link_overlay with_opacity">
+                                                    <ul class="icons-media">
+                                                        <li><a data-animated-link="fadeOut" href="#"><i class="fa fa-link"></i></a></li>
+                                                    </ul>
+                                                    <span class="topaz-hover"></span>
+                                                </div>
+                                            </div>
+                                            <div class="post-meta box">
+                                                <ul>
+                                                    <li class="post-on">@String.Format("{0:dd MMMM yyyy}", item.fecha)</li>
+                                                </ul>
+                                            </div>
+                                            <div class="post-content text-start box">
+                                                <h5><a style="height: 54px;    overflow: hidden;display: inline-block;" data-animated-link="fadeOut" href="#">@item.titulo</a></h5>
+                                                <div align="right"><a href="#"><button class="di_darckblue button fill tiny ">Leer m&aacute;s</button></a></div>
+                                            </div>
+                                        </article>
+                                         <!--! POST (@articulosFrontCount) -->
+
+                                    }
+                                   
+                                    articulosFrontCount++;
+                                }
+                              
+                                @{
+                                     articulosFrontCount = 1;
+                                }
+                              
+                                <!-- POST (3) -->
+                                <article role="article" style="padding: 0 !important;" class="post ok-md-4 ok-xsd-6 opacity-zero show animated fadeInUp" data-animate="fadeInUp" data-delay="250">
+                                    <div class="widget-content">
+                                        <ul class="with-border featured-posts">
+                                            @foreach (var item in Model.articulosFront)
+                                            {
+                                                if (articulosFrontCount > 2)
+                                                {
+                                                    <li>
+                                                        <a data-animated-link="fadeOut" href="#">
+                                                            <h6 style="max-height: 29px;    overflow: hidden;display: inline-block;" class="uppercase">@item.titulo</h6>
+                                                        </a>
+                                                        <span>@String.Format("{0:dd MMMM yyyy}", item.fecha)</span>
+                                                        <span class="text-right"><a class="white" href="#">Leer m&aacute;s &gt;</a></span>
+                                                    </li>
+                                                }
+                                                articulosFrontCount++;
+                                            }
+                                        </ul>
+                                    </div>
+                                    <div align="center" style="margin: 8px 0 0 0;"><a href="#"><button class="di_darckblue button fill tiny ">Ver m&aacute;s noticias</button></a></div>
+                                </article>
+                                <!--! POST (3) -->
+                            </div>
+                            <!--! END RESUMEN DE NOTICIAS -->
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--! END COMBUSTIBLES Y NOTICIAS -->
+    <!-- CONSULTA EN L&Iacute;NEA -->
+    <section class="section section-colored" data-bg="#faf9f5" style="background-color: rgb(250, 249, 245);">
+      <div class="page-section-content overflow-hidden" style="padding: 2.5em 0 !important">
+        <div class="container" data-animate="fadeInLeft">
+        <!-- TITLE -->
+        <h2 data-animate="fadeInDown" data-delay="0" style="margin: 0px !important;">Consultas en L&iacute;nea</h2>
+        <div class="topaz-line full"><i class="di-separator"></i></div>
+        <!--! END TITLE -->
+          <div class="ok-row">
+            <div class="ok-md-6 ok-xsd-12"> 
+              <!-- SLIDER -->
+              <div class="flexslider sample-slide small-control" data-animation="fade" data-loop="true" style="height: auto; border: solid 1px #BBB;">
+                <ul class="slides">
+                  <li class="slide-item" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
+                    <div class="flex-img"> <img src="/Files/FindImages?folname=media_slideshow&filename=perrv5njg9bpvjzv7a7k-consultas.jpg" alt="" draggable="false" /> </div>
+                  </li>
+                  <li class="slide-item" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
+                    <div class="flex-img"> <img src="/Files/FindImages?folname=media_slideshow&filename=xg9fu3r24qzr7ywl2saw-img-oficina.jpg" alt="" draggable="false" /> </div>
+                  </li>
+                </ul>
+                <ol class="flex-control-nav flex-control-paging">
+                  <li><a class="">1</a></li>
+                  <li><a class="flex-active">2</a></li>
+                </ol>
+                <ul class="flex-direction-nav">
+                  <li><a class="flex-prev" href="#">Anterior</a></li>
+                  <li><a class="flex-next" href="#">Siguiente</a></li>
+                </ul>
+              </div>
+              <!--! SLIDER -->
+              <div class="double-clear"></div>
+              <!-- DESCRIPTION -->
+              <p>
+                Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, sagittis sem nibh id elit. <a data-animated-link="fadeOut" href="#">Duis sed</a> odio sit amet nibh vulputate cursus amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.
+              </p>
+                <br />
+              <p align="center">
+                <a href="#" title="Formulario de Consulta en L&iacute;nea"><button class="di_darckblue button fill">Clic aqu&iacute;</button></a>
+              </p>
+              <!--! DESCRIPTION --> 
+            </div>
+            <div class="ok-offset-md-1 ok-md-5 ok-xsd-12"> 
+              <!-- ICONS TIMELINE -->
+              <ul class="dima-timeline-list">
+                <!-- ICON (1) -->
+                <li class="no-box features-start box-circle">
+                  <header role="banner"> <i class="di-edit icon-box-medium"><span class="topaz-hover"></span></i> </header>
+                  <div class="features-content">
+                    <h5 class="features-title">Formulario de Consulta</h5>
+                    <p>Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
+                  </div>
+                </li>
+                <!-- ICON (1) --> 
+                <!-- ICON (2) -->
+                <li class="no-box features-start box-circle">
+                  <header role="banner"> <i class="di-cog-r icon-box-medium"><span class="topaz-hover"></span></i> </header>
+                  <div class="features-content">
+                    <h5 class="features-title">Proceso de la Consulta</h5>
+                    <p>Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
+                  </div>
+                </li>
+                <!-- ICON (2) --> 
+                <!-- ICON (3) -->
+                <li class="no-box features-start box-circle">
+                  <header role="banner"> <i class="di-envelope icon-box-medium"><span class="topaz-hover"></span></i> </header>
+                  <div class="features-content">
+                    <h5 class="features-title">Entrega / Respuesta</h5>
+                    <p>Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
+                  </div>
+                </li>
+                <!-- ICON (3) -->
+              </ul>
+              <!-- ICONS TIMELINE --> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- FIN CONSULTA EN L&Iacute;NEA -->
+    <!-- CONTENIDO CENTRAL -->
+    <div class="dima-callout no-border no-margin reverse-custom">
+        <div class="container">
+            <!-- VICEMINISTERIO SECTION -->
+            <section class="section " id="viceministerios">
+                <div class="page-section-content overflow-hidden" style="padding: 0 !important;">
+                    <!-- TITLE -->
+                    <h2 data-animate="fadeInDown" data-delay="0" style="margin: 0px !important; color: #FFF;">Viceministerios</h2>
+                    <div class="topaz-line full"><i class="di-separator"></i></div>
+                    <!--! END TITLE -->
+                    <div class="container text-center ">
+                        <div class="ok-row">
+                            <ul class="rows products-grids" id="rows">
+                                @foreach (var item in Model.viceministeriosFront)
+                                {
+                                <!-- PRODUCT (1) -->
+                                    <li class="dima-product ok-md-3 ok-xsd-12 ok-sd-2 " data-animate="flipInX" data-delay="0">
+                                        <div class="product-img">
+                                            <div class="fix-chrome">
+                                                <figure><img src="@item.image_presentation_1" alt=""></figure>
+                                                <figure class="product-change-images"><img src="@item.image_presentation_2" alt=""></figure>
+                                                <!-- <span class="onsale"><span>MICT</span></span> -->
+                                            </div>
+                                        </div>
+                                        <div class="product-content">
+                                            <a data-animated-link="fadeOut" href="#">
+                                                <h5 class="product-name">@item.titulo</h5>
+                                            </a>
+                                        </div>
+                                    </li>
+                                <!--! PRODUCT (1) -->
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--! END VICEMINISTERIOS -->
+            <!-- OFICINAS -->
+            <section class="section" id="oficinas">
+                <!-- TITLE -->
+                <h2 data-animate="fadeInDown" data-delay="0" style="margin: 0px !important; color: #FFF;">Nuestras Oficinas</h2>
+                <div class="topaz-line full"><i class="di-separator"></i></div>
+                <!--! END TITLE -->
+                <div class="dima-tabs responsive-tab">
+                    <ul class="dima-tab-nav" id="dima-tab-nav">
+                        <li class="tab"><a data-animated-link="fadeOut" href="#tab-1" data-toggle="tab">Oficina Principal</a></li>
+                        <li class="tab"><a data-animated-link="fadeOut" href="#tab-2" data-toggle="tab">Oficina Av. 27 de Febrero</a></li>
+                    </ul>
+                    <div class="dima-tab-content">
+                        <div id="tab-1" class="tab-pane fade in clearfix dima-tab_content">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15136.79419050299!2d-69.9064582!3d18.4746636!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xdfeca96dfb675988!2sEdificio+de+Oficinas+Gubernamentales+Juan+Pablo+Duarte!5e0!3m2!1ses-419!2sdo!4v1461179936060" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        </div>
+                        <div id="tab-2" class="tab-pane fade in clearfix dima-tab_content">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10703.607320508441!2d-69.92188930387711!3d18.470216872087622!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc4fa5c7ab2b7379!2sMinisterio+de+Industria+y+Comercio!5e0!3m2!1ses-419!2sdo!4v1459431673264" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--! END OFICINAS -->
+            <!-- DE INTER&Eacute;S -->
+            <section class="section" id="deInteres" style="margin: 0.8em 0 !important;">
+                <div class="page-section-content overflow-hidden" style="padding: 0 !important;">
+                    <!-- TITLE -->
+                    <h2 data-animate="fadeInDown" data-delay="0" style="margin: 0px !important; color: #FFF;">De Inter&eacute;s</h2>
+                    <div class="topaz-line full"><i class="di-separator"></i></div>
+                    <!--! END TITLE -->
+                  <div class="owl-slider">
+                    <div class="boxed-blog owl-carousel owl-theme owl-rtl owl-responsive-1199 owl-loaded" data-owl-namber="5" data-owl-margin="15" data-owl-autoplay="true" data-owl-loop="true" data-owl-navigation="true" data-owl-pagination="true">
+                        @foreach (var item in Model.bannersFront)
+                        {
+                        <!-- PHOTO () -->
+                            <div class="isotope-item">
+                                <div class="work-item" style="height: auto; border: solid 1px #666;">
+                                    <div class="dima-masonry-100"></div>
+                                    <img src="@item.image_url" />
+                                    <div class="link_overlay with_opacity">
+                                        <ul class="icons-media">
+                                            <!-- <li><a data-animated-link="fadeOut" href="@item.url" data-lightbox="image"><i class="fa fa-search"></i></a></li> -->
+                                            <li><a data-animated-link="fadeOut" href="@item.url" target="_blank"><i class="fa fa-link"></i></a></li>
+                                        </ul>
+                                        <div class="work-info">
+                                            <div class="work-teitel text-center">
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                        <span class="topaz-hover"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        <!--! PHOTO () -->
+                        }
+                    </div>
+                    <div class="prev-next" style="display: block;">
+                        <a class="prev"></a>
+                        <a class="next"></a>
+                    </div>
+                  </div>
+                </div>
+            </section>
+            <!--! END DE INTER&Eacute;S -->
+          </div>
+        </div>
+    <!--! END CONTENIDO CENTRAL -->
+ 

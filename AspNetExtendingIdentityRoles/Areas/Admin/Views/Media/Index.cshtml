@@ -1,0 +1,22 @@
+﻿@model IEnumerable<PageWebMic.Areas.Admin.Models.media_album>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Album</h2>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="http://www.mic.gob.do/img/logo-mic.png" alt="..." style="width: 100%; display: block;">
+              
+                @Html.ActionLink( @item.titulo, "images", new { id = item.id},  new {@class = "caption" })
+                
+        </div>
+    </div>
+           }
+    </div>

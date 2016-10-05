@@ -1,0 +1,102 @@
+﻿
+@{
+    Layout = "~/Areas/Media/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Imagenes";
+}
+
+<br /><br />
+<legend>
+    Añadir Archivo A la Multimedia
+</legend>
+<div class="btn-group" data-toggle="buttons">
+    <label class="radio-inline">
+        <input type="radio" class="inlineRadioOptions" name="inlineRadioOptions" data-id="uploadButton" value="option1" checked>
+        <strong>
+            Imagen Desde la Computadora
+        </strong>
+    </label>
+    <label class="radio-inline">
+        <input type="radio" class="inlineRadioOptions"  name="inlineRadioOptions"  data-id="imageUrl" value="option2">
+        <strong> Imagen desde URL</strong>
+    </label>
+    <label class="radio-inline">
+        <strong>  <input type="radio" class="inlineRadioOptions"  name="inlineRadioOptions"  data-id="videoUrl" value="option3"> Video URL</strong>
+    </label>
+
+</div>
+<br />
+<br />
+<br />
+
+    <form action="@Url.Action("GuardarUrl",new{id = @ViewBag.id })" id="imageUrl" method="post">
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Nombre</label>
+            @Html.TextBox("name", string.Empty, new { @class = "form-control", required = "required" })
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">URL</label>
+            <div class="input-group">
+                <div class="input-group-addon"><span class="glyphicon glyphicon-picture"></span></div>
+                @Html.TextBox("url", string.Empty, new { @class = "form-control textImageUrl", required = "required" })
+            </div>
+        </div>
+        @Html.Hidden("type", "image")
+        <button type="submit" class="btn btn-default">Subir</button>
+    </div>
+    <div class="col-md-4">
+        <img src="" id="iframeImage" height="295" />
+    </div>
+
+</form>
+
+@using (Html.BeginForm("", "", FormMethod.Post, new { id = "videoUrl" }))
+{
+    <div class="btn-group" data-toggle="buttons">
+        <label class="radio-inline">
+            <input type="radio" class="inlineRadioVide" name="inlineRadioVide" data-id="Youtube" value="https://www.youtube.com/embed/" checked>
+            <strong>
+               Youtube
+            </strong>
+        </label>
+        <label class="radio-inline">
+            <input type="radio" class="inlineRadioVide" name="inlineRadioVide" data-id="Vimeo" value="https://player.vimeo.com/video/">
+            <strong>Vimeo</strong>
+        </label>
+    </div>
+    <br />
+    <br />
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Nombre</label>
+            @Html.TextBox("name", string.Empty, new { @class = "form-control nameVideo", required = "required" })
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">URL</label>
+            <div class="input-group">
+                <span class="input-group-addon" id="video-addon">https://example.com/users/</span>
+                @Html.TextBox("url", string.Empty, new { @class = "form-control textVideoUrl", required = "required" })
+            </div>
+        </div>
+        @Html.Hidden("type", "video")
+        <button type="submit" class="btn btn-default">Subir</button>
+    </div>
+    <div class="col-md-4">
+        <iframe id="iframeVideo"  width="540" height="295" src="https://www.youtube.com/embed/0WWzgGyAH6Y" frameborder="0" allowfullscreen>
+        </iframe>
+  </div>
+
+}
+
+    @Html.Partial("partial_image")
+<div>
+</div>
+
+
+
+@section scripts
+{
+
+    @Scripts.Render("~/scripts/FileUpload")
+
+}

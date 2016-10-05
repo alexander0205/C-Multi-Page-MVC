@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Scripts/ckeditor/ckeditor.js")
+    <script>
+        function Get(yourUrl) {
+            var Httpreq = new XMLHttpRequest(); // a new request
+            Httpreq.open("GET", yourUrl, false);
+            Httpreq.send(null);
+            return Httpreq.responseText;
+        }
+        var GLOBAL_script = {"apiUrlJpg":"@Html.Raw(ViewData["ApiServiceJpgView"])",
+            "apiUrlPdf": "@Html.Raw(ViewData["ApiServicePdfView"])",
+            "apiUrlUpload":"@Html.Raw(ViewData["ApiServiceUploadFile"])"};
+    </script>
+
+</head>
+<body>
+    <div class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink((string)ViewData["namePage"] , "Index", "Home", null, new { @class = "navbar-brand" })
+            </div>
+        @Html.Partial("partialMenu")
+        </div>
+    </div>
+    <div class="container body-content">
+        <br />
+        <div class="row">
+            <div class="col-md-3">
+
+                <table id="example-basic" class="treetable">
+                    <caption>
+                       Menu Articulos Contenido
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                <strong>
+                                    @Html.ActionLink((string)ViewData["viewAlltree"], "index")
+                                </strong>
+                            </th>
+                        </tr>
+                    </thead>
+                   
+                </table>
+            </div>
+            <div class="col-md-8">
+                @RenderBody()
+            </div>
+        </div>
+             
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+  
+    @Scripts.Render("~/scripts/jQuery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jspage")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

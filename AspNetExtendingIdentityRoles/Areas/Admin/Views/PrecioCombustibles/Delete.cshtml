@@ -1,0 +1,66 @@
+﻿@model PageWebMic.Areas.Admin.Models.cambio_combustible
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>cambio_combustible</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.fecha)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.fecha)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.titulo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.titulo)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.tasa_cambio)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.tasa_cambio)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AspNetUsers.UserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AspNetUsers.UserName)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

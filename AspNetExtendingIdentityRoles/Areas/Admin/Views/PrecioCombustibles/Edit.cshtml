@@ -1,0 +1,85 @@
+﻿@model PageWebMic.Areas.Admin.Models.cambio_combustible
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+
+<div class="row">
+    @using (Html.BeginForm(Html.BeginForm("Edit", "PrecioCombustibles", FormMethod.Post, new { enctype = "multipart/form-data" })))
+    {
+        @Html.ValidationSummary(true)
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.id)
+        <div class="form-inline">
+            <div class="form-group">
+                @Html.LabelFor(x => Model.titulo)
+                @Html.TextBoxFor(x => Model.titulo, new { @class = "form-control " })
+                @Html.ValidationMessageFor(x => Model.titulo)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => Model.tasa_cambio)
+                @Html.TextBoxFor(x => Model.tasa_cambio, new { @class = "form-control mask" })
+                @Html.ValidationMessageFor(x => Model.tasa_cambio)
+            </div>
+            <br />
+            <tr></tr>
+            <div class="form-group">
+                @Html.LabelFor(x => Model.file_combustible, new { @for = "exampleInputFile" })
+                @Html.TextBoxFor(x => Model.file_combustible, new { @type = "file" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => Model.file_gas_natural, new { @for = "exampleInputFile" })
+                @Html.TextBoxFor(x => Model.file_gas_natural, new { @type = "file" })
+            </div>
+        </div>
+        <hr />
+        for (int i = 0; i < Model.cambio_combustible_precio_lista.Count; i++)
+        {
+            @Html.HiddenFor(x => Model.cambio_combustible_precio_lista[i].id)
+
+            <div class="col-md-4">
+                <div class="form-inline">
+                    <h4>@Model.cambio_combustible_precio_lista[i].combustible.nombre</h4>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @Html.HiddenFor(x => Model.cambio_combustible_precio_lista[i].id_combustible)
+                            @Html.ValidationMessageFor(x => Model.cambio_combustible_precio_lista[i].id_combustible)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <div class="col-md-7">
+                            @Html.TextBoxFor(x => Model.cambio_combustible_precio_lista[i].precio, new { @class = "form-control  mask" })
+                            @Html.ValidationMessageFor(x => Model.cambio_combustible_precio_lista[i].precio)
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        }
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value='Crear' class="btn btn-primary" />
+            </div>
+
+
+        </div>
+
+
+    }
+</div>
+<div>
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/content/bootstrap")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/content/FileUploadd")
+    <script>
+      var GLOBAL_script = {"apiUrlJpg":"@Html.Raw(ViewData["ApiServiceJpgView"])",
+            "apiUrlPdf": "@Html.Raw(ViewData["ApiServicePdfView"])",
+            "apiUrlUpload":"@Html.Raw(ViewData["ApiServiceUploadFile"])"};
+    </script>
+</head>
+<body>
+  
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    <script>
+        var  getTree = function() {
+            // Some logic to retrieve, or generate tree structure
+            return  @Html.Raw(@ViewBag.menuContenido)
+        }
+    </script>
+    @Scripts.Render("~/scripts/jQuery")
+    @Scripts.Render("~/bundles/FileUpload")
+    @RenderSection("scripts", required: false)
+    <script>
+
+    function cargarClase() {
+        $(".inlineRadioOptions").each(function () {
+            var data = $(this).attr("data-id");
+            var form = $("#" + data);
+            if ($(this).is(':checked')) {
+                form.show();
+            } else {
+                form.hide();
+            }
+        });
+    }
+
+    function cargarVideo() {
+        $(".inlineRadioVide").each(function () {
+            var data = $(this);
+            var form = $("#video-addon");
+            if ($(this).is(':checked')) {
+                console.log(data.attr("value"));
+                form.html(data.attr("value"));
+
+            }
+         
+        });
+    }
+
+
+    $(".inlineRadioOptions").change(function () {
+        cargarClase();
+    });
+
+    $(".inlineRadioVide").change(function () {
+        cargarVideo();
+    });
+    cargarClase();
+    cargarVideo();
+
+    $(".textVideoUrl").keyup(function () {
+        var val = $(this).val();
+        $("#iframeVideo").attr("src", $('input[name=inlineRadioVide]:checked').val() + val);
+    });
+
+    $(".textImageUrl").keyup(function () {
+        var val = $(this).val();
+        $("#iframeImage").attr("src", val);
+        $(".txtUrlVideo").val(val);
+    });
+
+    $(".formularioMedia").submit(function (e) {
+        $.ajax({
+            url:$(this).attr("action"),
+            method: "POST",
+            data: $(this).serialize(),
+            type:"JSON",
+            success: function () {
+                $.ajax({
+                    // Uncomment the following to send cross-domain cookies:
+                    //xhrFields: {withCredentials: true},
+                    url: $('#fileupload').attr('data-upload'),
+                    dataType: 'json',
+                    context: $('#fileupload')[0]
+                }).done(function (result) {
+                    document.location.reload(true);
+
+                });
+            }
+        });
+        e.preventDefault();
+    });
+
+    </script>
+</body>
+</html>

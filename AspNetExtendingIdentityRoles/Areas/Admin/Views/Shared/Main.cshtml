@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/jstree/themes/default/style.min.css")
+    <script>
+      var GLOBAL_script = {"apiUrlJpg":"@Html.Raw(ViewData["ApiServiceJpgView"])",
+            "apiUrlPdf": "@Html.Raw(ViewData["ApiServicePdfView"])",
+          "apiUrlUpload":"@Html.Raw(ViewData["ApiServiceUploadFile"])"};
+        var filesSelectUrl  ="";
+    </script>
+</head>
+<body>
+    <div class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink((string)ViewData["namePage"], "Index", "Home", null, new { @class = "navbar-brand" })
+            </div>
+            @Html.Partial("partialMenu")
+        </div>
+    </div>
+
+    <div class="row" >
+            <div class="col-md-3 jstr">
+                <div id="jstree_demo" class="demo jstreeClass" style="margin-top:1em; min-height:200px;"></div>
+            </div>
+            <div class="col-md-8">
+                @RenderBody()
+                <hr />
+            </div>
+       
+
+        </div>
+
+          
+           
+            @Scripts.Render("~/scripts/jQuery")
+            @Scripts.Render("~/bundles/bootstrap")
+            @Scripts.Render("~/bundles/jspage")
+            @Scripts.Render("~/scripts/jstree/jstree.min.js")
+            @RenderSection("scripts", required: false)
+            <script>
+                function eliminarNodo() {
+                    var ref = $('#jstree_demo').jstree(true),
+                        sel = ref.get_selected();
+                
+                    if(!sel.length) { return false; }
+                    sel = sel[0];
+                    if (confirm('Esta seguro en Eliminar esta página? Si esta página tiene paginas hijas de el mismo igual se eliminaran.')) {
+                        $.ajax({
+                            url:"@ViewBag.urlDeleteNode",
+                            data:{id:sel},
+                            type:"POST",
+                            dataType:'json',
+                            success(data){
+                                if(data.validate){
+                                    window.location.href =  "@ViewBag.urlRedirectNode";
+                                }else{
+                                    alert(data.mensaje);
+                                }
+                            }
+                        });
+                    } else {
+                      
+                    }
+                };
+
+                $('#jstree_demo').jstree({
+                    'core'    : {
+                        'url' : '/get/children/',
+                        'data':@Html.Raw(@ViewBag.menuContenido),
+                    },"types" : {
+                        "#"   : {
+                            "max_children" : 1,
+                            "max_depth" : 4,
+                            "valid_children" : ["root"]
+                        },
+                        "root": {
+                            "icon" : "/static/3.3.0/assets/images/tree_icon.png",
+                            "valid_children" : ["default"]
+                        },
+                        "default" : {
+                            "valid_children" : ["default","file"]
+                        },
+                        "file" : {
+                            "icon" : "glyphicon glyphicon-file",
+                            "valid_children" : []
+                        }
+                    },
+                    "plugins" : [
+                     "dnd","state", "types", "wholerow","contextmenu"],
+                     "contextmenu" : {
+                         "items": function ($node) {
+                             return {
+                                 "Delete": {
+                                     "label": "Eliminar",
+                                     "action": function (obj) {
+                                         this.eliminarNodo(obj);
+                                     }
+                                 }
+                             };
+                         }
+                     }
+                    ,
+                }).on("activate_node.jstree", function(e,data){
+                    setTimeout(function () { 
+                       window.location.href =data.node.original.href
+                    }, 100)
+                }).on('changed.jstree', function (e, data) {
+                    if(data ) {
+                        //window.location.href ='/Admin/articulos_contenido/Index/' + data.selected.join(':');
+                        /*$.get('/Admin/articulos_contenido/Index/' + data.selected.join(':'), function (d) {
+                              $('#ContenidoAdministracion').show();
+                          //  $('#ContenidoAdministracion').html(d);
+                          });*/
+                    }
+                    else {
+
+                        $('#data .content').hide();
+                        $('#data .default').html('Select a file from the tree.').show();
+                    }
+                }).bind('loaded.jstree', function(e, data) {
+                    // invoked after jstree has loaded
+                    setTimeout(function () { 
+                        $.jstree.reference('#jstree_demo').deselect_all();
+                        $.jstree.reference('#jstree_demo').select_node(@ViewData["idSelectNode"]);
+                    }, 100);
+                });
+                
+            </script>
+</body>
+</html>

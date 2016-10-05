@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/image-picker.css")
+    @Styles.Render("~/Content/css")
+  
+    
+    <script>
+        function Get(yourUrl) {
+            var Httpreq = new XMLHttpRequest(); // a new request
+            Httpreq.open("GET", yourUrl, false);
+            Httpreq.send(null);
+            return Httpreq.responseText;
+        }
+        var GLOBAL_script = {"apiUrlJpg":"@Html.Raw(ViewData["ApiServiceJpgView"])",
+            "apiUrlPdf": "@Html.Raw(ViewData["ApiServicePdfView"])",
+            "apiUrlUpload":"@Html.Raw(ViewData["ApiServiceUploadFile"])"};
+    </script>
+    <style>
+        ul.thumbnails.image_picker_selector li .thumbnail img {
+    -webkit-user-drag: none;
+    height: 100px;
+}
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink((string)ViewData["namePage"], "Index", "Home", null, new { @class = "navbar-brand" })
+            </div>
+            @Html.Partial("partialMenu")
+        </div>
+    </div>
+    <div class="container body-content">
+        <br />
+        <div class="row">
+
+            @RenderBody()
+        </div>
+
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+    @Scripts.Render("~/scripts/jQuery")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/Scripts/ckeditor/ckeditor.js")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jspage")
+    @RenderSection("scripts", required: false)
+    <script>
+
+        CKEDITOR.replace('contenido', {
+            "extraPlugins": "imagebrowser,filebrowser",
+            "imageBrowser_listUrl": listUrlImageBrowser,
+            "filebrowserBrowseUrl": browserUrl
+        });
+
+
+        var popup;
+
+        function selectImage(functionName) {
+            popup = window.open(browserUrlImages + "&CKEditorFuncNum=" + functionName, "Popup", "width=500,height=500");
+            popup.focus();
+            return false
+        }
+
+       
+
+        CKEDITOR.editorConfig = function (config) {
+            config.templates_files = ['/Scripts/ckeditor/mytemplates.js'];
+            config.toolbarGroups = [
+                { name: 'document', groups: ['mode', 'document', 'doctools'] },
+                { name: 'clipboard', groups: ['clipboard', 'undo'] },
+                { name: 'editing', groups: ['find', 'selection', 'spellchecker', 'editing'] },
+                { name: 'forms', groups: ['forms'] },
+                '/',
+                { name: 'basicstyles', groups: ['basicstyles', 'cleanup'] },
+                { name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi', 'paragraph'] },
+                '/', { name: 'insert', groups: ['insert'] },
+
+                { name: 'links', groups: ['links'] },
+
+                { name: 'styles', groups: ['styles'] },
+                { name: 'colors', groups: ['colors'] },
+                { name: 'tools', groups: ['tools'] },
+                { name: 'others', groups: ['others'] },
+                { name: 'about', groups: ['about'] }
+            ];
+            config.removeButtons = 'About,HiddenField,Save,Print';
+            config.width = 'auto';
+            config.extraPlugins = 'filetools';
+        };
+
+      
+
+    </script>
+   
+
+</body>
+</html>

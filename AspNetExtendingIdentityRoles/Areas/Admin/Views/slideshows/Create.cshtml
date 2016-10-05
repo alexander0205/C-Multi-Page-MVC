@@ -1,0 +1,112 @@
+﻿@model PageWebMic.Areas.Admin.Models.slideshow
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<style>
+    
+
+#page-wrap		    { height:434px; margin: 20px auto; }
+
+.image              {       background-color: #E4E4E4;  text-align: center;position: relative; margin-bottom: 20px; height:434px;border: 2px dashed #C8CBCE; }
+.img-html                  { position: absolute; top: 180px; left: 0; width: 100%; }
+.img-html             { color: white; font: bold 24px/45px Helvetica, Sans-Serif; letter-spacing: -1px;  
+                      background: rgb(0, 0, 0); background: rgba(0, 0, 0, 0.7); padding: 10px; }
+.img-html      { padding: 0 2px; background: none; }
+</style>
+<h2>Create</h2>
+
+@using (Html.BeginForm("Create", "slideshows", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>slideshow</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.LabelFor(model => model.id_articulo, "id_articulo", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("id_articulo", String.Empty)
+                @Html.ValidationMessageFor(model => model.id_articulo)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.text_html, new { @class = "form-control ckeditor" })
+                @Html.ValidationMessageFor(model => model.text_html)
+            </div>
+        </div>
+        <div class="form-group">
+            <div  class="image">
+                <img id="imageContenido" style="height:434px;" src="http://icons.iconarchive.com/icons/iconsmind/outline/512/Photo-Album-icon.png" alt="">
+           <span class="img-html"></span>
+            </div>
+            @Html.LabelFor(model => model.url_image, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.url_image, new { type = "file" })
+                @Html.ValidationMessageFor(model => model.url_image)
+            </div>
+        </div>
+      
+        
+    
+            <br />
+            <div class="form-group">
+                @Html.LabelFor(model => model.active, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.active)
+                    @Html.ValidationMessageFor(model => model.active)
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<script>
+
+    CKEDITOR.editorConfig = function (config) {
+        config.toolbarGroups = [
+            { name: 'document', groups: ['mode', 'document', 'doctools'] },
+            { name: 'clipboard', groups: ['clipboard', 'undo'] },
+            { name: 'editing', groups: ['find', 'selection', 'spellchecker', 'editing'] },
+            { name: 'forms', groups: ['forms'] },
+            { name: 'basicstyles', groups: ['basicstyles', 'cleanup'] },
+            { name: 'links', groups: ['links'] },
+            { name: 'paragraph', groups: ['list', 'indent', 'align', 'blocks', 'bidi', 'paragraph'] },
+            { name: 'insert', groups: ['insert'] },
+            { name: 'styles', groups: ['styles'] },
+            { name: 'colors', groups: ['colors'] },
+            { name: 'tools', groups: ['tools'] },
+            { name: 'others', groups: ['others'] },
+            { name: 'about', groups: ['about'] }
+        ];
+
+        config.removeButtons = 'Save,Print,Preview,PasteText,PasteFromWord,Find,Replace,About,Maximize,ShowBlocks,Image,Flash,Table,HorizontalRule,Smiley,SpecialChar,PageBreak,Iframe,Anchor,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Form,Checkbox';
+
+        for (var i in CKEDITOR.instances) {
+            CKEDITOR.instances[i].on('change', function () {
+                var valuee = CKEDITOR.instances[i].getData();
+                $(".img-html").html(valuee);
+            });
+
+
+            $('input[type=file]').change(function (event) {
+                var valorImage = $(this).val();
+                $("#imageContenido").attr("src",URL.createObjectURL(event.target.files[0]) );
+            });
+
+        }
+     };
+
+
+</script>

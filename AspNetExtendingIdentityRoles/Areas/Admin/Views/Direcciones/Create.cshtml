@@ -1,0 +1,162 @@
+﻿@model PageWebMic.Areas.Admin.Models.articulos_contenido
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout3.cshtml";
+}
+    @using (Html.BeginForm()) 
+    {
+        @Html.AntiForgeryToken()
+        
+        <div class="form-horizontal">
+            <h4>articulos_contenido</h4>
+            <span style="float: right;">
+                <button href="@ViewBag.urlMedia" class="btn btn-default mediaColorBox">
+                    <span class="glyphicon glyphicon-picture" aria-hidden="true">
+                    </span>
+                    Media
+                </button>
+            </span>
+            <hr />
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                @Html.LabelFor(model => model.id_title, htmlAttributes: new { @class = "control-label col-md-2 " })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.id_title,new { @class = "form-control textOutput", @readonly = "readonly" })
+                    @Html.ValidationMessageFor(model => model.id_title)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.titulo, htmlAttributes: new { @class = "control-label col-md-2 " })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.titulo, new { @class = "form-control textInput" })
+                    @Html.ValidationMessageFor(model => model.titulo)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.subtitulo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.subtitulo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.subtitulo)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.fecha_publicacion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.fecha_publicacion, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.fecha_publicacion)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.contenido, htmlAttributes: new { @class = "control-label col-md-2" })
+               
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.contenido, new { @class = "form-control ckeditor" })
+                    @Html.ValidationMessageFor(model => model.contenido)
+                </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.tags, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.tags, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.tags)
+                    </div>
+                </div>
+                @Html.HiddenFor(model => model.parent_id, new { @class = "form-control", Value = @ViewBag.idParents })
+                <div class="form-group">
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#home" aria-controls="home" role="tab" data-toggle="tab">
+                                <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>         Imagenes Seleccionadas
+                                <span id="image-picker-img" class="badge">0</span>
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">
+                                <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>   PDF Seleccionados
+                                <span id="image-picker-pdf" class="badge">0</span>
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#videos" aria-controls="videos" role="tab" data-toggle="tab">
+                                <span class="glyphicon glyphicon-film" aria-hidden="true"></span>   Videos Seleccionados
+                                <span id="image-picker-video" class="badge">0</span>
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#presentation" aria-controls="home" role="tab" data-toggle="tab">
+                                <span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Imagenes Presentacion
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="home">
+
+                            @Html.DropDownList("image", new List<SelectListItem>
+                   {
+                   }, new { @multiple = "multiple", @class = "image-picker image-picker-img  show-html" })
+                            <!--  <select  multiple="multiple" class="image-picker image-picker-img  show-html">
+                    </select>-->
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="profile">
+                            @Html.DropDownList("pdf", new List<SelectListItem>
+                   {
+                   }, new { @multiple = "multiple", @class = "image-picker image-picker-pdf  show-html" })
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="videos">
+                            @Html.DropDownList("video", new List<SelectListItem>
+                   {
+                   }, new { @multiple = "multiple", @class = "image-picker image-picker-video  show-html" })
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="presentation">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <a href="javascript:void(0)" onclick="selectImage('image_presentation_1')" class="thumbnail">
+                                        <img id="image_presentation_1_image" src="http://martbug.lk/wp-content/uploads/2015/12/select_icon.png" alt="...">
+                                    </a>
+                                    @Html.HiddenFor(model => model.image_presentation_1, new { @class = "form-control imageSelectControl", data_image = "image_presentation_1_image" })
+                                </div>
+                                <div class="col-md-2">
+                                    <a href="javascript:void(0)" onclick="selectImage('image_presentation_2')" class="thumbnail">
+                                        <img id="image_presentation_2_image" src="http://martbug.lk/wp-content/uploads/2015/12/select_icon.png" alt="...">
+                                    </a>
+                                    @Html.HiddenFor(model => model.image_presentation_2, new { @class = "form-control imageSelectControl", data_image = "image_presentation_2_image" })
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+    }
+    
+    <div>
+        @Html.ActionLink("Back to List", (string)@ViewBag.backList)
+    </div>
+
+<script>
+     var browserUrl =  "/Scripts/ckeditor/plugins/imagebrowser/browser/browser.html?listUrl=@Url.Action("List", "files", new { area = string.Empty, id = (int)ViewBag.IdInstance, type = "file" })";
+     var browserUrlImages =  "/Scripts/browser/browser.html?listUrl=@Url.Action("List", "files", new { area = string.Empty, id = (int)ViewBag.IdInstance, type = "image" })";
+    var listUrlImageBrowser =  "@Url.Action("List", "files" ,new { area=string.Empty, id = (int)ViewBag.IdInstance, type= "image" })";
+
+    var filesSelectJson = @ViewBag.selectFiles;
+    var filesSelectUrl  = "@ViewBag.selectFilesUrl" ;
+
+</script>
