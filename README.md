@@ -20,6 +20,7 @@ user: demo password: demo1234
 .. image:: ../webmic/1.JPG
   :alt:
   :align: center
+
 .. image:: ../webmic/1.JPG
   :alt:
   :align: center
