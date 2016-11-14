@@ -1,3 +1,10 @@
+## CMS MVC 4.5  | Creación Contenidos Aleatorios
+*Base de datos* :https://github.com/alexander0205/C-Multi-Page-MVC/blob/master/scriptDbProject.sql
+
+## Como acceder.
+http://alexanderferrerasmic.azurewebsites.net/admin/home
+user: demo password: demo1234
+
 ## Acerca C#  Multiple Page
 Este CMS lo desarrolle como una propuesta para un sitio web de múltiples usuarios en el que puedan editar usuarios asignarles roles y mucho más. 
 ## Modulos 
@@ -12,9 +19,6 @@ Los módulos desarrollados son.
 Las secciones de media están relacionados con los artículos contenidos.
 ## Media y Usuarios
 Para editar un artículo contenido tiene que tener los permisos de usuario de su padre.  
-## Como acceder.
-http://alexanderferrerasmic.azurewebsites.net/admin/home
-user: demo password: demo1234
 
 ## Algunas Imágenes
 https://github.com/alexander0205/C-Multi-Page-MVC/blob/master/webmic/1.JPG
