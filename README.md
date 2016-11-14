@@ -17,8 +17,7 @@ http://alexanderferrerasmic.azurewebsites.net/admin/home
 user: demo password: demo1234
 
 ## Algunas Imágenes
-.. image:: https://github.com/alexander0205/C-Multi-Page-MVC/blob/master/webmic/1.JPG 
-  :alt:
+.. image:: webmic/1.JPG
   :align: center
 
 .. image:: ../webmic/1.JPG
