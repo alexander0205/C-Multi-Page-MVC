@@ -17,7 +17,7 @@ http://alexanderferrerasmic.azurewebsites.net/admin/home
 user: demo password: demo1234
 
 ## Algunas Imágenes
-.. image:: ../webmic/1.JPG
+.. image:: ../images/addimage.png
   :alt:
   :align: center
 
