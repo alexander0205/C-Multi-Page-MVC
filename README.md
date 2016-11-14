@@ -17,27 +17,20 @@ http://alexanderferrerasmic.azurewebsites.net/admin/home
 user: demo password: demo1234
 
 ## Algunas Imágenes
-.. image:: webmic/1.JPG
-  :align: center
+https://github.com/alexander0205/C-Multi-Page-MVC/blob/master/webmic/1.JPG
 
-.. image:: ../webmic/1.JPG
-  :alt:
-  :align: center
-.. image:: ../webmic/1.JPG
-  :alt:
-  :align: center
+https://github.com/alexander0205/C-Multi-Page-MVC/blob/master/webmic/2.JPG
 
-.. image:: ../webmic/1.JPG
+https://github.com/alexander0205/C-Multi-Page-MVC/blob/master/webmic/3.JPG
 
-  :alt:
-  :align: center
+https://github.com/alexander0205/C-Multi-Page-MVC/blob/master/webmic/4.JPG
 
-.. image:: ../webmic/1.JPG
-  :alt:
-  :align: center
+https://github.com/alexander0205/C-Multi-Page-MVC/blob/master/webmic/5.JPG
 
-.. image:: ../webmic/1.JPG
-  :alt:
-  :align: center
+https://github.com/alexander0205/C-Multi-Page-MVC/blob/master/webmic/6.JPG
 
+https://github.com/alexander0205/C-Multi-Page-MVC/blob/master/webmic/7.JPG
 
+https://github.com/alexander0205/C-Multi-Page-MVC/blob/master/webmic/8.JPG
+
+https://github.com/alexander0205/C-Multi-Page-MVC/blob/master/webmic/9.JPG
